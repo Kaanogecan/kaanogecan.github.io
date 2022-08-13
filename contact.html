@@ -1,0 +1,59 @@
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    {
+        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0
+        if (!isIndexAjaxRequest) {
+            redirects.onlyPartialRequestAction();
+        }
+    }
+</script>
+<div>
+    <div class="continer">
+        <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-3 border">
+                        <img src="/source/img/phone.png" style="width: 20px;height:20px;" />
+                        Telefon
+                    </div>
+                    <div class="col-sm-7 border">
+                        <a href="tel:+90554000000">*** *** ** **</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 border">
+                        Eposta
+                    </div>
+                    <div class="col-sm-7 border">
+                        <a href='mailto:kaanogecan@gmail.com?subject="İletişim"'>kaanogecan@gmail.com</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 border">
+                        <img src="/source/img/linkedin.png" style="width: 20px;height:20px;" />
+                        Linkedin
+                    </div>
+                    <div class="col-sm-7 border">
+                        username: <a href='https://tr.linkedin.com/in/kaanogecan'>kaanogecan</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 border">
+                        GitHub
+                    </div>
+                    <div class="col-sm-7 border">
+                        username: <a href='https://github.com/kaanogecan'>kaanogecan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    {
+        homePageFuncs.breakBlink = true;
+    }
+</script>

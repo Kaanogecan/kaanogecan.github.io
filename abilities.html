@@ -1,0 +1,67 @@
+<div>
+    <br>
+    <div class="container">
+        <div id="Abilities">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="commentLine">
+                    &lt;!--For developer--&gt;
+                </div>
+                <div>
+                    Local storage'a bir key attım. Onu alttaki inputa gir ve console'da
+                    yazdıracağım geliştirdiğim projeler ve kullandığım teknolojiler hakkında bilgi sahibi ol
+                    Key = SecretKey
+                    <br>
+                    <input type="text" id="SecretKeyInput" placeholder="SecretKey" />
+                    <a href="#" onclick="runFunction()">yolla</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    {
+        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0
+        if (!isIndexAjaxRequest) {
+            redirects.onlyPartialRequestAction();
+        }
+        homePageFuncs.breakBlink = true;
+        let randomKey = utils.randomKeyGenerator();
+        localStorage.setItem('SecretKey', randomKey);
+    }
+    /*components*/
+    {
+        // utils.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90", "danger");
+        // utils.progressComponent("#Abilities", '#Mvc', "Mvc", "80", "primary");
+        // utils.progressComponent("#Abilities", '#abilities_Mssql', "Mssql", "80", "success");
+        // utils.progressComponent("#Abilities", '#abilities_EF', "Entity Framework", "80", "warning");
+        // utils.progressComponent("#Abilities", '#abilities_Jquery', "Jquery", "70", "info");
+        // utils.progressComponent("#Abilities", '#abilities_JS', "Java Script", "50", "Secondary");
+        // utils.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "50", "Secondary");
+        // utils.progressComponent("#Abilities", '#abilities_Python', "Python", "35", "Secondary");
+
+        utils.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90" );
+        utils.progressComponent("#Abilities", '#abilities_Mvc', "Mvc", "80");
+        utils.progressComponent("#Abilities", '#abilities_Mssql', "Mssql", "70");
+        utils.progressComponent("#Abilities", '#abilities_EF', "Entity Framework", "60");
+        utils.progressComponent("#Abilities", '#abilities_Jquery', "Jquery", "50");
+        utils.progressComponent("#Abilities", '#abilities_JS', "Java Script", "30");
+        utils.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "15");
+        utils.progressComponent("#Abilities", '#abilities_Python', "Python", "12");
+
+    }
+    function runFunction() {
+
+        let secretKey = localStorage.getItem('SecretKey');
+        let code = $("#SecretKeyInput").val();
+        if (secretKey == code) {
+            utils.modal("daha yapmadım :D ");
+        }
+
+    }
+
+</script>

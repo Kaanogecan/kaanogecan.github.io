@@ -1,0 +1,201 @@
+body {
+    margin: 0px !important;
+}
+
+#wrapper {
+    background-color: black;
+    font: 1.3rem Inconsolata, monospace;
+    color: white;
+    height: 100vh;
+    width: 100%;
+}
+
+.border {
+    border: 1px solid #202020;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#mainContent {
+    padding: 20px;
+}
+
+.inline {
+    justify-content: start;
+    display: flex;
+    bottom: 0px;
+}
+#modal {
+    padding: 1%;
+    min-width: 15%;
+    border: 1px solid green;
+    margin: auto,auto,auto,auto;
+    right: 50%;
+    bottom: 50%;
+    position: absolute;
+    box-shadow: 7px 7px 20px 0px green;
+    background-color: black;
+}
+/* leftBar */
+#leftPanel {
+    width: 10%;
+    height: 100vh;
+    left: 0px;
+    position: absolute;
+}
+
+/* navbar */
+#navBar {
+    justify-content: center;
+    display: flex;
+    padding-top: 10px;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 1px 20px 0px green;
+    padding-bottom: 10px;
+}
+
+#navBar>#leftSide {
+    justify-content: left;
+    display: flex;
+    padding-left: 20px;
+    height: 100%;
+    width: 30%;
+}
+
+#navBar>#middleSide {
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    width: 30%;
+}
+
+#navBar>#rightSide {
+    justify-content: flex-end;
+    display: flex;
+    height: 100%;
+    width: 50%;
+}
+
+/* Bottom Text */
+#bottomStatic {
+    bottom: 0px;
+    width: 100%;
+    position: absolute;
+}
+
+#bottomInput {
+    width: 100%;
+    background-color: #202020;
+    color: green;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    background-color: red;
+}
+
+/* COLORS */
+
+.selected {
+    background-color: darkblue;
+}
+
+.darkBlue {
+    color: blue;
+}
+
+.underline {
+    text-decoration: underline wavy red 1px !important;
+}
+
+.class {
+    color: #4EC9B0
+}
+
+.lightBlue {
+    color: cornflowerblue;
+}
+
+.method {
+    color: #DCDCAA;
+}
+
+.commentLine {
+    color: #57A64A;
+}
+
+.properties {
+    color: #DCDCDC;
+}
+
+/* tooltip */
+
+
+#tooltipDiv {
+    border-color: white;
+    border-style: solid;
+    width: 80%;
+    height: 10%;
+    z-index: 99;
+    margin: 5%;
+}
+
+
+.tooltipTopSide {
+    justify-content: left;
+    display: flex;
+}
+
+/* Intellisense Div*/
+#intelliDiv {
+    width: 20%;
+    border: 1px solid white;
+    background-color: black;
+}
+
+#helpDiv {
+    padding: 1%;
+    width: 15%;
+    border: 1px solid green;
+    right: 50%;
+    bottom: 50%;
+    position: absolute;
+    box-shadow: 7px 7px 20px 0px green;
+    background-color: black;
+}
+
+.intelliDivHover {
+    cursor: pointer;
+}
+
+.intelliDivHover:hover {
+    background-color: #57A64A
+}
+
+/* Abilities Page */
+#SecretKeyInput {
+
+    background-color: #202020;
+    color: green;
+}
+
+.bottomBorder
+{
+    margin-bottom: 1%;
+    border-bottom: 1px solid white;
+}

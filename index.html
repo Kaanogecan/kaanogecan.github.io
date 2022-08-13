@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--Bad design right? I know but i am back-end developer.-->
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <script src="script.js"></script>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--jquery-->
+
+
+    <title>Cv.exe</title>
+</head>
+
+<body>
+    <input type="hidden" id="initFunction" val="" />
+    <div id="wrapper">
+        <div id="navBar">
+            <div id="leftSide">
+                <div class="darkBlue">new&nbsp;</div>
+                <div class="underline">
+                    <a class="method underline customTooltip" tooltipFuncText="Home" tooltipText="anasayfa"
+                        href="index.html" onclick="redirects.changeTitle('KaanOgecan')">KaanOgecan()</a>
+                </div>
+            </div>
+            <div id="middleSide"></div>
+            <div id="rightSide">
+                <a class="method customTooltip" tooltipFuncText="GetAboutMe" tooltipText="Hakkımda Sayfası"
+                    href="javascript:void(0)" onclick="redirects.changeTitle('GetAboutMe()')">.GetAboutMe()
+                    &nbsp;</a>
+                <a class="method customTooltip" tooltipFuncText="GetInfo" tooltipText="Eğitim Bilgilerim"
+                    href="javascript:void(0)" onclick="redirects.changeTitle('GetInfo()')">.GetInfo() &nbsp;</a>
+                <a class="method customTooltip" tooltipFuncText="GetAbilities" tooltipText="Yeteneklerim"
+                    href="javascript:void(0)" onclick="redirects.getAbilitiesPage()">.GetAbilities()
+                    &nbsp;</a>
+                <a class="method customTooltip" tooltipFuncText="GetContact" tooltipText="iletişim Bilgilerim"
+                    href="javascript:void(0)" onclick="redirects.getContactPage()">.GetContact()
+                    &nbsp;</a>
+            </div>
+        </div>
+
+        <div id="mainContent">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2" style="border-right: 1px solid white;height: 90vh;">
+                        File Explorer
+                        <hr>
+                        <div id="toggleMenu" value='True'>
+                            <a class="properties" href="javascript:void(0)" id="leftMenuToggle"
+                                onclick="utils.toggleLeftMenu('#toggleMenu')" style="z-index: 100;">◢ MyCvWebSite
+                                Files</a>
+                            <br>
+                            <div style="width: 100%;" class="inline toggleElement">&nbsp;└<a id="CvOnizle"
+                                    class="lightBlue customTooltip"
+                                    tooltipText="Cv belgemi yeni sekmede önizlemesini açar"
+                                    href="./source/files/KaanOgecan.pdf" target="_blank"><img
+                                        src="./source/img/pdfpng.png" style="width:30px;height:30px;">
+                                    cv.pdf</a>&nbsp;
+                                <a id="CvIndir" class="customTooltip" tooltipText="Cv belgemi pdf uzantılı indirir."
+                                    href="./source/files/KaanOgecan.pdf" download="KaanOgecanCv"><img
+                                        src="./source/img/download.png" style="width: 25px;height:25px"></a>
+                            </div>
+                            <div style="width: 100%; bottom:0px" class="inline toggleElement">&nbsp;└<a
+                                    class="lightBlue customTooltip" tooltipText="linkedin"
+                                    href="https://tr.linkedin.com/in/kaanogecan" target="_blank">
+                                    <img src="./source/img/linkedin.png" style="width:25px;height:25px;">
+                                    <span>
+                                        linkedin.html
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <h1 class="commentLine">
+                            //&lt;title&gt;
+                            <span id="title"> KaanOgecan </span>
+                            &lt;/title&gt;
+                        </h1>
+                        <div class="row">
+                            <div class="col-sm-12" id="content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="bottomStatic">
+            <div id="intelliDiv" style="display: none; margin-left: 17.5%;">
+            </div>
+            <div class="inline" style="background-color: #202020;margin-left: 17.5%;">
+                <div class="commentLine" style="left: 0px; top: 0px;"> > </div>
+                <div style="width: 100%;">
+                    <input type="text" id="bottomInput" onkeydown="return bottomConsole.preventStringInput(event.key)"
+                        onfocusout="bottomConsole.hideInteliDivDelay()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    InitToolTip();
+    bottomConsole.InitIntellisenseWords();
+    redirects.redirectInit();
+</script>
+
+</html>
