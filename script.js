@@ -51,6 +51,22 @@ var redirects =
         redirects.changeUrl("abilities.html", 'GetAbilities()');
 
     },
+    getEduInfoPage: function () {
+        homePageFuncs.breakBlink = true;
+        $.get("eduinfo.html", function (data) {
+            $("#content").html(data);
+        });
+        redirects.changeTitle('GetEduInfo()');
+        redirects.changeUrl("eduinfo.html", 'GetEduInfo()');
+    },
+    getInfoPage: function () {
+        homePageFuncs.breakBlink = true;
+        $.get("info.html", function (data) {
+            $("#content").html(data);
+        });
+        redirects.changeTitle('GetInfo()');
+        redirects.changeUrl("info.html", 'GetInfo()');
+    },
     onlyPartialRequestAction: function () {
         $.get("index.html", function (data) {
             $("body").html(data);
@@ -129,17 +145,9 @@ var bottomConsole =
         if (key == "Enter") {
             var functionObject = bottomConsole.functionTxtList.find(x => x.key == inputText);
             if (inputText == "help") {
-                debugger;
                 let html = "";
                 bottomConsole.functionTxtList.map(function (x) { html += x.key + "<br>"; });
-                // $("div").remove("#helpDiv");
-                // $("#wrapper").append("<div id ='helpDiv'></div>");
-                // $("#helpDiv").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='bottomConsole.hideHelpDiv()'>x</div>")
-                // bottomConsole.functionTxtList.forEach(element => {
-                //     html += (element.key + "<br>");
-                //     // $("#helpDiv").append(element.key + "<br>");
-                // });
-                utils.modal(html);
+                utils.modal.modal(html);
                 $("#bottomInput").val('');
             }
             if (functionObject) {
@@ -199,18 +207,21 @@ var bottomConsole =
 function InitToolTip() {
     $('.customTooltip').mouseover(function () {
         var txt = $(this).attr("tooltipText");
-        var funcTxt = $(this).attr("tooltipFuncText");
-        var divTxt = funcTxt && funcTxt != '' ? "<div class='tooltipTopSide'><div class= 'lightBlue'>function&nbsp;</div><div class='method'> " + funcTxt + "</div>():&nbsp;<div class='commentLine'>void</div>" + '</div><hr>' : '';
-        divTxt += txt;
+        var isDisabledForTooltip = $(this).hasClass("disabledForTooltip");
+        if (!isDisabledForTooltip) {
+            var funcTxt = $(this).attr("tooltipFuncText");
+            var divTxt = funcTxt && funcTxt != '' ? "<div class='tooltipTopSide'><div class= 'lightBlue'>function&nbsp;</div><div class='method'> " + funcTxt + "</div>():&nbsp;<div class='commentLine'>void</div>" + '</div><hr>' : '';
+            divTxt += txt;
 
-        $("#wrapper").append('<div class ="tooltipDiv"> ' + divTxt + ' </div>');
-        var topPosition = $(this).offset().top - $(document).scrollTop() + 25;
-        var leftPosition = $(this).offset().left - $(document).scrollLeft();
+            $("#wrapper").append('<div class ="tooltipDiv"> ' + divTxt + ' </div>');
+            var topPosition = $(this).offset().top - $(document).scrollTop() + 25;
+            var leftPosition = $(this).offset().left - $(document).scrollLeft();
 
-        if ((leftPosition + ($(window).width() * 0.12)) > $(window).width()) {
-            leftPosition = ($(window).width() * 0.85);
+            if ((leftPosition + ($(window).width() * 0.12)) > $(window).width()) {
+                leftPosition = ($(window).width() * 0.85);
+            }
+            $(".tooltipDiv").css({ top: topPosition, left: leftPosition, position: 'fixed', border: "1px solid white", padding: "10px", "background-color": "black", "font-size": "1rem" });
         }
-        $(".tooltipDiv").css({ top: topPosition, left: leftPosition, position: 'fixed', border: "1px solid white", padding: "10px", "background-color": "black", "font-size": "1rem" });
     });
     $('.customTooltip').mouseout(function () {
         $(".tooltipDiv").hide()
@@ -271,13 +282,17 @@ var homePageFuncs = {
 
 var utils =
 {
+
     decIncPx: 2,
+    toggleAnimationMs: 10,
     toggleLeftMenu: function (Id) {
         let toggleElements = $(Id + ">.toggleElement").toArray();
         let value = $(Id).attr("value") == "True";
         let txt = $(Id + ">#leftMenuToggle").text();
         if (value) {
             $(Id + ">#leftMenuToggle").text("◥" + txt.substring(1))
+            toggleElements.forEach(x => { $(x + ">a").addClass("disabledForTooltip") });
+
             toggleElements.forEach(x => {
                 utils.toggleHideAnimation(x, 0);
             });
@@ -285,6 +300,7 @@ var utils =
         }
         else {
             $(Id + ">#leftMenuToggle").text("◢" + txt.substring(1))
+            toggleElements.forEach(x => { $(x + ">a").removeClass("disabledForTooltip") });
             toggleElements.forEach(x => {
                 utils.toggleShowAnimation(x, 0);
             });
@@ -304,7 +320,7 @@ var utils =
                     $(x).hide();
                     return;
                 }
-            }, 10);
+            }, utils.toggleAnimationMs);
 
         }
         toggle(x, i);
@@ -324,65 +340,80 @@ var utils =
                 else {
                     return;
                 }
-            }, 10);
+            }, utils.toggleAnimationMs);
         }
         toggle(x, i);
     },
-    progressComponent: function (element, id, name, percent, color, animationMs) {
-        let isColorSetted = true;
-        if (!color || color == '') {
-            color = 'secondary';
-            isColorSetted = false;
-        }
-        let component = `
-        <div class="row bottomBorder">
-            <div class="col-sm-3">`+ name + `</div>
-            <div class="col-sm-8">
-                <div class="progress">
-                    <div id="`+ id + `" class="progress-bar progress-bar-striped bg-` + color + ` progress-bar-animated"
-                        role="progressbar" aria-label="Success example" style="width: 0%" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"> 0%
+    progressComponent: {
+        progressComponent: function (element, id, name, percent, color, animationMs) {
+            let isColorSetted = true;
+            if (!color || color == '') {
+                color = 'secondary';
+                isColorSetted = false;
+            }
+            let component = `
+            <div class="row bottomBorder">
+                <div class="col-sm-3">`+ name + `</div>
+                <div class="col-sm-8">
+                    <div class="progress">
+                        <div id="`+ id + `" class="progress-bar progress-bar-striped bg-` + color + ` progress-bar-animated"
+                            role="progressbar" aria-label="Success example" style="width: 0%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"> 0%
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`;
-        $(element).append(component);
-        utils.loadAnimation(id, percent, isColorSetted ? color : null, animationMs);
-    },
-    loadAnimation: function (element, percent, color, animationMs) {
-        setTimeout(() => {
-            let myElement = document.querySelector("#\\" + element);
-            utils.loadAnimationStep(myElement, 0, percent, color, animationMs);
-        }, 300);
-    },
-    indexByColor:
-        [
-            { key: 90, value: "success" },
-            { key: 70, value: "primary" },
-            { key: 50, value: "info" },
-            { key: 30, value: "warning" },
-            { key: 15, value: "danger" },
-            { key: 0, value: "secondary" },
-        ],
-    loadAnimationDefaultMs: 20,
-    loadAnimationStep(element, index, limit, color, animationMs) {
-        if (index <= limit) {
-            if (!color || color == null) {
-                let className = this.indexByColor.find(x => index >= x.key).value;
-                $(element).removeClass("bg-success");
-                $(element).removeClass("bg-primary");
-                $(element).removeClass("bg-info");
-                $(element).removeClass("bg-warning");
-                $(element).removeClass("bg-danger");
-                $(element).removeClass("bg-secondary");
-                $(element).addClass("bg-" + className);
-            }
-            $(element).css('width', index + '%');
-            $(element).html(index + '%');
+            </div>`;
+            $(element).append(component);
+            this.loadAnimation(id, percent, isColorSetted ? color : null, animationMs);
+        },
+        loadAnimation: function (element, percent, color, animationMs) {
             setTimeout(() => {
-                utils.loadAnimationStep(element, index + 1, limit, color, animationMs);
-            }, animationMs ?? this.loadAnimationDefaultMs);
-        }
+                let myElement = document.querySelector("#\\" + element);
+                this.loadAnimationStep(myElement, 0, percent, color, animationMs);
+            }, 300);
+        },
+        indexByColor:
+            [
+                { key: 90, value: "success" },
+                { key: 70, value: "primary" },
+                { key: 50, value: "info" },
+                { key: 30, value: "warning" },
+                { key: 15, value: "danger" },
+                { key: 0, value: "secondary" },
+            ],
+        loadAnimationDefaultMs: 20,
+        loadAnimationStep(element, index, limit, color, animationMs) {
+            if (index <= limit) {
+                if (!color || color == null) {
+                    let className = this.indexByColor.find(x => index >= x.key).value;
+                    $(element).removeClass("bg-success");
+                    $(element).removeClass("bg-primary");
+                    $(element).removeClass("bg-info");
+                    $(element).removeClass("bg-warning");
+                    $(element).removeClass("bg-danger");
+                    $(element).removeClass("bg-secondary");
+                    $(element).addClass("bg-" + className);
+                }
+                $(element).css('width', index + '%');
+                $(element).html(index + '%');
+                setTimeout(() => {
+                    this.loadAnimationStep(element, index + 1, limit, color, animationMs);
+                }, animationMs ?? this.loadAnimationDefaultMs);
+            }
+        },
+    },
+    modal: {
+        modal: function (html) {
+            $("div").remove("#modal");
+            $("#mainContent").css("filter", "blur(2px)")
+            $("#wrapper").append("<div id ='modal'>" + html + "</div>");
+            $("#modal").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='utils.modal.hideModal()'>x</div>")
+        },
+        hideModal: function () {
+            $("div").remove("#modal");
+            $("#mainContent").css("filter", "blur(0)")
+
+        },
     },
     textToSpeech: function (text) {
         // new SpeechSynthesisUtterance object
@@ -402,16 +433,5 @@ var utils =
     randomKeyGenerator: function () {
         let r = (Math.random() + 1).toString(36).substring(2);
         return r;
-    },
-    modal: function (html) {
-        $("div").remove("#modal");
-        $("#mainContent").css("filter", "blur(2px)")
-        $("#wrapper").append("<div id ='modal'>" + html + "</div>");
-        $("#modal").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='utils.hideModal()'>x</div>")
-    },
-    hideModal: function () {
-        $("div").remove("#modal");
-        $("#mainContent").css("filter", "blur(0)")
-
-    },
+    }
 }

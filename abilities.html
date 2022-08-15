@@ -44,14 +44,14 @@
         // utils.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "50", "Secondary");
         // utils.progressComponent("#Abilities", '#abilities_Python', "Python", "35", "Secondary");
 
-        utils.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90" );
-        utils.progressComponent("#Abilities", '#abilities_Mvc', "Mvc", "80");
-        utils.progressComponent("#Abilities", '#abilities_Mssql', "Mssql", "70");
-        utils.progressComponent("#Abilities", '#abilities_EF', "Entity Framework", "60");
-        utils.progressComponent("#Abilities", '#abilities_Jquery', "Jquery", "50");
-        utils.progressComponent("#Abilities", '#abilities_JS', "Java Script", "30");
-        utils.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "15");
-        utils.progressComponent("#Abilities", '#abilities_Python', "Python", "12");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90" );
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_Mvc', "Mvc", "80");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_Mssql', "Mssql", "70");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_EF', "Entity Framework", "60");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_Jquery', "Jquery", "50");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_JS', "Java Script", "30");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "15");
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_Python', "Python", "12");
 
     }
     function runFunction() {
@@ -59,7 +59,7 @@
         let secretKey = localStorage.getItem('SecretKey');
         let code = $("#SecretKeyInput").val();
         if (secretKey == code) {
-            utils.modal("daha yapmadım :D ");
+            utils.modal.modal("daha yapmadım :D ");
         }
 
     }
