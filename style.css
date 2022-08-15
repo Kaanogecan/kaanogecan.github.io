@@ -29,6 +29,7 @@ ul {
 
 #mainContent {
     padding: 20px;
+    height: 90%;
 }
 
 .inline {
@@ -36,17 +37,19 @@ ul {
     display: flex;
     bottom: 0px;
 }
+
 #modal {
     padding: 1%;
     min-width: 15%;
     border: 1px solid green;
-    margin: auto,auto,auto,auto;
+    margin: auto, auto, auto, auto;
     right: 50%;
     bottom: 50%;
     position: absolute;
     box-shadow: 7px 7px 20px 0px green;
     background-color: black;
 }
+
 /* leftBar */
 #leftPanel {
     width: 10%;
@@ -100,7 +103,8 @@ ul {
     background-color: #202020;
     color: green;
 }
-#bottomInput:focus{
+
+#bottomInput:focus {
     outline: none;
 }
 
@@ -197,8 +201,7 @@ input:focus {
     color: green;
 }
 
-.bottomBorder
-{
+.bottomBorder {
     margin-bottom: 1%;
     border-bottom: 1px solid white;
 }

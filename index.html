@@ -32,14 +32,16 @@
             </div>
             <div id="middleSide"></div>
             <div id="rightSide">
-                <a class="method customTooltip" tooltipFuncText="GetAboutMe" tooltipText="Hakkımda Sayfası"
-                    href="javascript:void(0)" onclick="redirects.changeTitle('GetAboutMe()')">.GetAboutMe()
+                <a class="method customTooltip" tooltipFuncText="GetEduInfo" tooltipText="Eğitim Bilgilerim"
+                    href="javascript:void(0)" onclick="redirects.getEduInfoPage()">.GetEduInfo()
                     &nbsp;</a>
-                <a class="method customTooltip" tooltipFuncText="GetInfo" tooltipText="Eğitim Bilgilerim"
-                    href="javascript:void(0)" onclick="redirects.changeTitle('GetInfo()')">.GetInfo() &nbsp;</a>
+                <a class="method customTooltip" tooltipFuncText="GetInfo" tooltipText="Hakkımda"
+                    href="javascript:void(0)" onclick="redirects.getInfoPage()">.GetInfo() &nbsp;</a>
+
                 <a class="method customTooltip" tooltipFuncText="GetAbilities" tooltipText="Yeteneklerim"
                     href="javascript:void(0)" onclick="redirects.getAbilitiesPage()">.GetAbilities()
                     &nbsp;</a>
+                    
                 <a class="method customTooltip" tooltipFuncText="GetContact" tooltipText="iletişim Bilgilerim"
                     href="javascript:void(0)" onclick="redirects.getContactPage()">.GetContact()
                     &nbsp;</a>
@@ -47,9 +49,9 @@
         </div>
 
         <div id="mainContent">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-2" style="border-right: 1px solid white;height: 90vh;">
+            <div class="h-100 container-fluid">
+                <div class="h-100 row ">
+                    <div class="col-sm-2 sidebar" style="border-right: 1px solid white;">
                         File Explorer
                         <hr>
                         <div id="toggleMenu" value='True'>
