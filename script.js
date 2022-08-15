@@ -290,8 +290,8 @@ var utils =
         let value = $(Id).attr("value") == "True";
         let txt = $(Id + ">#leftMenuToggle").text();
         if (value) {
-            $(Id + ">#leftMenuToggle").text("◥" + txt.substring(1))
-            toggleElements.forEach(x => { $(x + ">a").addClass("disabledForTooltip") });
+            $(Id + ">#leftMenuToggle").text("◥" + txt.substring(1));
+            $(Id + ".toggleElement>a").addClass("disabledForTooltip");
 
             toggleElements.forEach(x => {
                 utils.toggleHideAnimation(x, 0);
@@ -299,8 +299,8 @@ var utils =
             $(Id).attr("value", "False");
         }
         else {
-            $(Id + ">#leftMenuToggle").text("◢" + txt.substring(1))
-            toggleElements.forEach(x => { $(x + ">a").removeClass("disabledForTooltip") });
+            $(Id + ">#leftMenuToggle").text("◢" + txt.substring(1));
+            $(Id + ".toggleElement>a").removeClass("disabledForTooltip");
             toggleElements.forEach(x => {
                 utils.toggleShowAnimation(x, 0);
             });
