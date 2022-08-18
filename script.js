@@ -16,6 +16,8 @@ var redirects =
         if (url == '/' || url.startsWith("/index.html")) homePageFuncs.typeWriterHome();
         else if (url.startsWith("/contact.html")) redirects.getContactPage();
         else if (url.startsWith("/abilities.html")) redirects.getAbilitiesPage();
+        else if (url.startsWith("/eduinfo.html")) redirects.getEduInfoPage();
+        else if (url.startsWith("/info.html")) redirects.getInfoPage();
     },
 
     changeUrl: function (redirectingUrl, title) {
@@ -34,30 +36,39 @@ var redirects =
         const element = document.getElementById('title');
         element.innerHTML = title;
     },
-    getContactPage: function () {
+    getContactPage: function (htmlDiv, changeTitle = true) {
+        htmlDiv = htmlDiv == undefined || htmlDiv == "" ? "#content" : htmlDiv;
         homePageFuncs.breakBlink = true;
         $.get("contact.html", function (data) {
-            $("#content").html(data);
+            $(htmlDiv).html(data);
         });
-        redirects.changeTitle('GetContact()');
-        redirects.changeUrl("contact.html", 'GetContact()');
+        if (changeTitle) {
+            redirects.changeTitle('GetContact()');
+            redirects.changeUrl("contact.html", 'GetContact()');
+        }
     },
-    getAbilitiesPage: function () {
+    getAbilitiesPage: function (htmlDiv, changeTitle = true) {
+        htmlDiv = htmlDiv == undefined || htmlDiv == "" ? "#content" : htmlDiv;
         homePageFuncs.breakBlink = true;
         $.get("abilities.html", function (data) {
-            $("#content").html(data);
+            $(htmlDiv).html(data);
         });
-        redirects.changeTitle('GetAbilities()');
-        redirects.changeUrl("abilities.html", 'GetAbilities()');
+        if (changeTitle) {
+            redirects.changeTitle('GetAbilities()');
+            redirects.changeUrl("abilities.html", 'GetAbilities()');
+        }
 
     },
-    getEduInfoPage: function () {
+    getEduInfoPage: function (htmlDiv, changeTitle = true) {
+        htmlDiv = htmlDiv == undefined || htmlDiv == "" ? "#content" : htmlDiv;
         homePageFuncs.breakBlink = true;
         $.get("eduinfo.html", function (data) {
-            $("#content").html(data);
+            $(htmlDiv).html(data);
         });
-        redirects.changeTitle('GetEduInfo()');
-        redirects.changeUrl("eduinfo.html", 'GetEduInfo()');
+        if (changeTitle) {
+            redirects.changeTitle('GetEduInfo()');
+            redirects.changeUrl("eduinfo.html", 'GetEduInfo()');
+        }
     },
     getInfoPage: function () {
         homePageFuncs.breakBlink = true;
@@ -433,5 +444,70 @@ var utils =
     randomKeyGenerator: function () {
         let r = (Math.random() + 1).toString(36).substring(2);
         return r;
+    }
+}
+var infoPageFuncs = {
+    getPartialByRadioId: function (pageRadioInput) {
+        debugger;
+        let pages = { abilities: 1, eduInfo: 2, contact: 3 };
+        var value = $(pageRadioInput).val();
+
+        let currentPageName = $("#infoMainContent>#newPage").attr("value");
+        let currentPageIndex = pages[currentPageName];
+
+        let newIndex = pages[value];
+        let isTop = (currentPageIndex < newIndex) || currentPageIndex == undefined;
+        let pageInnerDivId = "";
+
+        // if (isTop) {
+        $("div").remove("#currentPage");
+        $("#infoMainContent>#newPage").attr("Id", "currentPage");
+        $("#infoMainContent").append("<div id = 'newPage' value='" + value + "'></div>");
+        $("#infoMainContent>#currentPage").css("height", "100%");
+        pageInnerDivId = "#infoMainContent>#newPage";
+        // }
+        // else {
+        //     $("#infoMainContent>#newPage").attr("value", value);
+        //     $("#infoMainContent>#currentPage").attr("value", currentPageIndex);
+        //     pageInnerDivId = "#infoMainContent>#currentPage";
+        // }
+
+        if (value == "abilities") {
+            redirects.getAbilitiesPage(pageInnerDivId, false);
+        }
+        if (value == "eduInfo") {
+            redirects.getEduInfoPage(pageInnerDivId, false);
+        }
+        if (value == "contact") {
+            redirects.getContactPage(pageInnerDivId, false);
+        }
+        // if (isTop)
+        this.slideAnimationTop(1);
+        // else
+        //     this.slideAnimationBottom(1);
+    },
+    slideAnimationTop: function (animationSpeedMs) {
+
+        function sliderStep(value, animationSpeedMs) {
+            if (value >= 0) {
+                $("#infoMainContent>#currentPage").css("height", value + "%")
+                setTimeout(() => {
+                    sliderStep(value - 1, animationSpeedMs);
+                }, animationSpeedMs);
+            }
+        }
+        sliderStep(100, animationSpeedMs);
+    },
+    slideAnimationBottom: function (animationSpeedMs) {
+
+        function sliderStep(value, animationSpeedMs) {
+            if (value <= 100) {
+                $("#infoMainContent>#currentPage").css("height", value + "%")
+                setTimeout(() => {
+                    sliderStep(value + 1, animationSpeedMs);
+                }, animationSpeedMs);
+            }
+        }
+        sliderStep(0, animationSpeedMs);
     }
 }
