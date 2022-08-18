@@ -8,6 +8,7 @@ body {
     color: white;
     height: 100vh;
     width: 100%;
+    overflow: hidden
 }
 
 .border {
@@ -96,6 +97,8 @@ ul {
     bottom: 0px;
     width: 100%;
     position: absolute;
+    z-index: 14;
+
 }
 
 #bottomInput {
@@ -204,4 +207,75 @@ input:focus {
 .bottomBorder {
     margin-bottom: 1%;
     border-bottom: 1px solid white;
+}
+
+
+#maxHeight {
+    /* background-color: #fff000; */
+    height: 100%;
+}
+
+
+/* scrollbar*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    height: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    height: 10px;
+}
+
+/* info */
+#infoMainContent {
+
+    width: 98%;
+}
+
+#infoRight {
+    margin-top: 20%;
+    width: 2%;
+    height: 100%;
+}
+
+.sectionCustomInput {
+    cursor: pointer;
+    border: #000;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    border-radius: 50%;
+    background-color: green;
+    border: 1px solid #f1f1f1;
+    width: 15px;
+    height: 15px;
+}
+
+#infoRight>input[type=radio]:checked+.sectionCustomInput {
+    background-color: cornflowerblue;
+}
+
+#currentPage {
+    position: relative;
+    z-index: 10;
+    background-color: black;
+}
+#newPage
+{
+    position: relative;
+    z-index: 11;
+    background-color: black;
 }

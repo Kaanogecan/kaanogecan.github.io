@@ -2,9 +2,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     {
-        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0
+        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0;
         if (!isIndexAjaxRequest) {
             redirects.onlyPartialRequestAction();
         }
+        else {
+            $("#abilities").change();
+        }
     }
 </script>
+<div class="inline" style="height:100%">
+    <div id="infoMainContent">
+        <div id="currentPage" value="abilities"></div>
+        <div id="newPage"></div>
+    </div>
+    <div id="infoRight">
+        <input type="radio" name="infoPage" id="abilities" value="abilities" style="opacity: 0;"
+            onchange="infoPageFuncs.getPartialByRadioId(this)" checked>
+        <label for="abilities" class="sectionCustomInput"></label>
+        <input type="radio" name="infoPage" id="eduInfo" value="eduInfo" style="opacity: 0;"
+            onchange="infoPageFuncs.getPartialByRadioId(this)">
+        <label for="eduInfo" class="sectionCustomInput"></label>
+        <input type="radio" name="infoPage" id="contact" value="contact" style="opacity: 0;"
+            onchange="infoPageFuncs.getPartialByRadioId(this)">
+        <label for="contact" class="sectionCustomInput"></label>
+
+    </div>
+</div>

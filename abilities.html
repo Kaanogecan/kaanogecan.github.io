@@ -1,23 +1,18 @@
-<div>
-    <br>
-    <div class="container">
-        <div id="Abilities">
+<div style="padding:2%;height: 100%;">
+    <div id="Abilities">
+    </div>
+    <div>
+        <br>
+        <div class="commentLine">
+            &lt;!--For developer--&gt;
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <br>
-                <div class="commentLine">
-                    &lt;!--For developer--&gt;
-                </div>
-                <div>
-                    Local storage'a bir key attım. Onu alttaki inputa gir ve console'da
-                    yazdıracağım geliştirdiğim projeler ve kullandığım teknolojiler hakkında bilgi sahibi ol
-                    Key = SecretKey
-                    <br>
-                    <input type="text" id="SecretKeyInput" placeholder="SecretKey" />
-                    <a href="#" onclick="runFunction()">yolla</a>
-                </div>
-            </div>
+        <div>
+            Local storage'a bir key attım. Onu alttaki inputa gir ve console'da
+            yazdıracağım geliştirdiğim projeler ve kullandığım teknolojiler hakkında bilgi sahibi ol
+            Key = SecretKey
+            <br>
+            <input type="text" id="SecretKeyInput" placeholder="SecretKey" />
+            <a href="#" onclick="runFunction()">yolla</a>
         </div>
     </div>
 </div>
@@ -25,8 +20,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     {
-        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0
-        if (!isIndexAjaxRequest) {
+
+        let isIndexAjaxRequest = $("body:has(#wrapper)").length > 0;
+        let isInfoPage = $("body:has(#infoMainContent)").length > 0;
+
+        if (!isIndexAjaxRequest && !isInfoPage) {
             redirects.onlyPartialRequestAction();
         }
         homePageFuncs.breakBlink = true;
@@ -44,7 +42,7 @@
         // utils.progressComponent("#Abilities", '#abilities_HtmlCss', "Html/Css", "50", "Secondary");
         // utils.progressComponent("#Abilities", '#abilities_Python', "Python", "35", "Secondary");
 
-        utils.progressComponent.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90" );
+        utils.progressComponent.progressComponent("#Abilities", '#abilities_cSharp', "C#", "90");
         utils.progressComponent.progressComponent("#Abilities", '#abilities_Mvc', "Mvc", "80");
         utils.progressComponent.progressComponent("#Abilities", '#abilities_Mssql', "Mssql", "70");
         utils.progressComponent.progressComponent("#Abilities", '#abilities_EF', "Entity Framework", "60");
