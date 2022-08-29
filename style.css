@@ -250,23 +250,26 @@ input:focus {
     margin-top: 20%;
     width: 2%;
     height: 100%;
+    padding-left: 1%;
 }
 
 .sectionCustomInput {
+    right: 0px;
     cursor: pointer;
     border: #000;
     margin-top: 20%;
     margin-bottom: 20%;
-    border-radius: 50%;
     background-color: green;
     border: 1px solid #f1f1f1;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 20px;
 }
 
 #infoRight>input[type=radio]:checked+.sectionCustomInput {
     background-color: cornflowerblue;
 }
+
+
 
 #currentPage {
     position: relative;

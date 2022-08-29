@@ -448,7 +448,6 @@ var utils =
 }
 var infoPageFuncs = {
     getPartialByRadioId: function (pageRadioInput) {
-        debugger;
         let pages = { abilities: 1, eduInfo: 2, contact: 3 };
         var value = $(pageRadioInput).val();
 
