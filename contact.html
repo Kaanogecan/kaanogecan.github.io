@@ -53,25 +53,25 @@
         </div>
     </div> -->
 
-    <div class="container" style="font-size: 12px; padding-left: 1%;">
+    <div class="container-fluid" style="font-size: 12px; margin-left: 1rem;">
         <div class="row">
-            <a href="tel:+905545938202" class="inline">
+            <a href="tel:+905545930000" class="inline lightBlue">
                 <div class="col-sm-2" id="phoneLogo"></div>
                 <div class="col-sm-10" id="phoneText"></div>
             </a>
         </div>
         <br>
         <div class="row">
-            <a href='mailto:kaanogecan@gmail.com?subject="İletişim"' class="inline">
+            <a href='mailto:kaanogecan@gmail.com?subject="İletişim"' class="inline lightBlue">
                 <div class="col-sm-2" id="mailLogo"></div>
                 <div class="col-sm-10" id="mailText"></div>
             </a>
         </div>
         <div class="row">
-            <a href='https://tr.linkedin.com/in/kaanogecan' >
+            <a href='https://tr.linkedin.com/in/kaanogecan' class="lightBlue" >
                 <div class="col-sm-6" id="linkedin"></div>
             </a>
-            <a href='https://github.com/kaanogecan' >
+            <a href='https://github.com/kaanogecan' class="lightBlue">
                 <div class="col-sm-6" id="github"></div>
             </a>
         </div>
@@ -82,23 +82,23 @@
 <script>
     {
         let phoneIcon = [
-            " __i",
-            "|---|",
-            "|[_]|",
-            "|:::|",
-            "|:::|",
-            '`\\   \\ ',
-            "  \\_=_\\ "
+            "    __i",
+            "   |---|",
+            "   |[_]|",
+            "   |:::|",
+            "   |:::|",
+            '   `\\   \\ ',
+            "     \\_=_\\ "
 
         ];
-        let phoneArray = [
-            " _____ _____ _  _   _____ ___ ____   ___ ___   ___ ___  ",
-            "| ____| ____| || | | ____/ _ \\___ \\ / _ \\__ \\ / _ \\__ \\ ",
-            "| |__ | |__ | || |_| |__| (_) |__) | (_) | ) | | | | ) |",
-            "|___ \\|___ \\|__   _|___ \\\\__, |__ < > _ < / /| | | |/ / ",
-            " ___) |___) |  | |  ___) | / /___) | (_) / /_| |_| / /_ ",
-            "|____/|____/   |_| |____/ /_/|____/ \\___/____|\\___/____|",
-        ];
+        // let phoneArray = [
+        //     " _____ _____ _  _   _____ ___ ____   ___ ___   ___ ___  ",
+        //     "| ____| ____| || | | ____/ _ \\___ \\ / _ \\__ \\ / _ \\__ \\ ",
+        //     "| |__ | |__ | || |_| |__| (_) |__) | (_) | ) | | | | ) |",
+        //     "|___ \\|___ \\|__   _|___ \\\\__, |__ < > _ < / /| | | |/ / ",
+        //     " ___) |___) |  | |  ___) | / /___) | (_) / /_| |_| / /_ ",
+        //     "|____/|____/   |_| |____/ /_/|____/ \\___/____|\\___/____|",
+        // ];
         let mail = [
             " _                                                                                    _ _                      ",
             "| |                                                       ____                       (_) |                     ",
@@ -137,7 +137,7 @@
             " |___/                         ",
         ]
         itemToLine(phoneIcon, "#phoneLogo");
-        itemToLine(phoneArray, "#phoneText");
+        // itemToLine(phoneArray, "#phoneText");
         itemToLine(mailLogo, "#mailLogo");
         itemToLine(mail, "#mailText");
         itemToLine(linkedin, "#linkedin");
