@@ -30,30 +30,36 @@
     </div>
 </div>
 <script>
+    { localStorage.setItem('breakGet', false); }
     {
-
         $('#wrapper').bind('mousewheel', function (e) {
-            debugger;
-            let radios = $("#infoRight input[type=radio]").toArray();
-            let checkedRadio = $("#infoRight input[type=radio]:checked").attr("id");
-            let index = radios.findIndex(x => x.id == checkedRadio);
-            radios.forEach(element => {
-                $(element).attr("checked",false);
-            });
-            let radio;
-            if (e.originalEvent.wheelDelta / 120 > 0) {
-                if (index > 0) {
-                    radio = radios[index - 1];
+            let breakGet = localStorage.getItem('breakGet');
+            if (breakGet == "false") {
+                localStorage.setItem('breakGet', true);
+                let radios = $("#infoRight input[type=radio]").toArray();
+                let checkedRadio = $("#infoRight input[type=radio]:checked").attr("id");
+                let index = radios.findIndex(x => x.id == checkedRadio);
+                radios.forEach(element => {
+                    $(element).attr("checked", false);
+                });
+                let radio;
+                if (e.originalEvent.wheelDelta / 120 > 0) {
+                    if (index > 0) {
+                        radio = radios[index - 1];
+                    }
                 }
-            }
-            else {
-                if (radios.length > index + 1) {
-                    radio = radios[index + 1];
-                }
+                else {
+                    if (radios.length > index + 1) {
+                        radio = radios[index + 1];
+                    }
 
+                }
+                if (radio != undefined) {
+                    $(radio).attr('checked', true);
+                    $(radio).change();
+                }
             }
-            $(radio).attr('checked', true);
-            $(radio).change();
+            setTimeout(() => localStorage.setItem('breakGet', false), 2000);
         });
     };
 </script>

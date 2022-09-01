@@ -231,7 +231,7 @@ function InitToolTip() {
             if ((leftPosition + ($(window).width() * 0.12)) > $(window).width()) {
                 leftPosition = ($(window).width() * 0.85);
             }
-            $(".tooltipDiv").css({ top: topPosition, left: leftPosition, position: 'fixed', border: "1px solid white", padding: "10px", "background-color": "black", "font-size": "1rem" });
+            $(".tooltipDiv").css({ top: topPosition, left: leftPosition, position: 'fixed', border: "1px solid white", padding: "10px", "background-color": "black", "font-size": "1rem", "z-index": 999 });
         }
     });
     $('.customTooltip').mouseout(function () {
@@ -486,7 +486,7 @@ var infoPageFuncs = {
         //     this.slideAnimationBottom(1);
     },
     slideAnimationTop: function (animationSpeedMs) {
-
+        
         function sliderStep(value, animationSpeedMs) {
             if (value >= 0) {
                 $("#infoMainContent>#currentPage").css("height", value + "%")
