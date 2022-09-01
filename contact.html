@@ -10,7 +10,7 @@
     }
 </script>
 <div>
-    <div class="continer" style="height: 100%;">
+    <!-- <div class="continer" style="height: 100%;">
         <div class="row">
             <div class="col-sm-1">
             </div>
@@ -51,10 +51,117 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <div class="container" style="font-size: 12px; padding-left: 1%;">
+        <div class="row">
+            <a href="tel:+905545938202" class="inline">
+                <div class="col-sm-2" id="phoneLogo"></div>
+                <div class="col-sm-10" id="phoneText"></div>
+            </a>
+        </div>
+        <br>
+        <div class="row">
+            <a href='mailto:kaanogecan@gmail.com?subject="İletişim"' class="inline">
+                <div class="col-sm-2" id="mailLogo"></div>
+                <div class="col-sm-10" id="mailText"></div>
+            </a>
+        </div>
+        <div class="row">
+            <a href='https://tr.linkedin.com/in/kaanogecan' >
+                <div class="col-sm-6" id="linkedin"></div>
+            </a>
+            <a href='https://github.com/kaanogecan' >
+                <div class="col-sm-6" id="github"></div>
+            </a>
+        </div>
     </div>
+
+</div>
 </div>
 <script>
     {
+        let phoneIcon = [
+            " __i",
+            "|---|",
+            "|[_]|",
+            "|:::|",
+            "|:::|",
+            '`\\   \\ ',
+            "  \\_=_\\ "
+
+        ];
+        let phoneArray = [
+            " _____ _____ _  _   _____ ___ ____   ___ ___   ___ ___  ",
+            "| ____| ____| || | | ____/ _ \\___ \\ / _ \\__ \\ / _ \\__ \\ ",
+            "| |__ | |__ | || |_| |__| (_) |__) | (_) | ) | | | | ) |",
+            "|___ \\|___ \\|__   _|___ \\\\__, |__ < > _ < / /| | | |/ / ",
+            " ___) |___) |  | |  ___) | / /___) | (_) / /_| |_| / /_ ",
+            "|____/|____/   |_| |____/ /_/|____/ \\___/____|\\___/____|",
+        ];
+        let mail = [
+            " _                                                                                    _ _                      ",
+            "| |                                                       ____                       (_) |                     ",
+            "| | ____ _  __ _ _ __   ___   __ _  ___  ___ __ _ _ __   / __ \   __ _ _ __ ___   __ _ _| |  ___ ___  _ __ ___  ",
+            "| |/ / _` |/ _` | '_ \\ / _ \\ / _` |/ _ \\/ __/ _` | '_ \\ / / _` |/ _` | '_ ` _ \\ / _` | | | / __/ _ \\| '_ ` _ \\ ",
+            "|   < (_| | (_| | | | | (_) | (_| |  __/ (_| (_| | | | | | (_| | (_| | | | | | | (_| | | || (_| (_) | | | | | |",
+            "|_|\\_\\__,_|\\__,_|_| |_|\\___/ \\__, |\\___|\\___\\__,_|_| |_|\\ \\__,_|\\__, |_| |_| |_|\\__,_|_|_(_)___\\___/|_| |_| |_|",
+            "                              __/ |                      \\____/  __/ |                                         ",
+            "                             |___/                              |___/                                          ",
+        ];
+        let mailLogo = [
+            "   |E]",
+            "   .-|=====-.",
+            "   | | mail |",
+            "___|________|",
+            "       ||",
+            "       ||",
+        ];
+        let linkedin = [
+            " _ _       _            _ _ ",
+            "| (_)     | |          | (_)      ",
+            "| |_ _ __ | | _____  __| |_ _ __  ",
+            "| | | '_ \\| |/ / _ \\/ _` | | '_ \\ ",
+            "| | | | | |   <  __/ (_| | | | | |",
+            "|_|_|_| |_|_|\\_\\___|\\__,_|_|_| |_|",
+        ];
+        let github = [
+
+            "       _ _   _           _     ",
+            "      (_) | | |         | |    ",
+            "  __ _ _| |_| |__  _   _| |__  ",
+            " / _` | | __| '_ \\| | | | '_ \\ ",
+            "| (_| | | |_| | | | |_| | |_) |",
+            " \\__, |_|\\__|_| |_|\\__,_|_.__/ ",
+            "  __/ |                        ",
+            " |___/                         ",
+        ]
+        itemToLine(phoneIcon, "#phoneLogo");
+        itemToLine(phoneArray, "#phoneText");
+        itemToLine(mailLogo, "#mailLogo");
+        itemToLine(mail, "#mailText");
+        itemToLine(linkedin, "#linkedin");
+        itemToLine(github, "#github");
+
         homePageFuncs.breakBlink = true;
+    }
+
+
+
+    function itemToLine(array, id) {
+        let strTxt = "";
+        for (let i = 0; i < array.length; i++) {
+            let text = array[i];
+            let line = "";
+            for (let j = 0; j < text.length; j++) {
+                if (text[j] != " ") {
+
+                    line += text[j];
+                }
+                else
+                    line += "&nbsp;";
+            }
+            $(id).append(line + "<br>");
+        }
     }
 </script>
