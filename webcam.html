@@ -32,17 +32,6 @@
     }
 </style>
 <script>
-    // Image to ASCII
-    // The Coding Train / Daniel Shiffman
-    // https://thecodingtrain.com/CodingChallenges/166-ascii-image.html
-    // https://youtu.be/55iwMYv8tGI
-
-    // ASCII video: https://editor.p5js.org/codingtrain/sketches/KTVfEcpWx
-    // ASCII image canvas: https://editor.p5js.org/codingtrain/sketches/r4ApYWpH_
-    // ASCII image DOM: https://editor.p5js.org/codingtrain/sketches/ytK7J7d5j
-    // ASCII image source text: https://editor.p5js.org/codingtrain/sketches/LNBpdYQHP
-    // ASCII image weather API: https://editor.p5js.org/codingtrain/sketches/DhdqcoWn4
-
     const density = "Ñ@#W$9876543210?!abc;:+=-,._                    ";
     // const density = '       .:-i|=+%O#@'
     // const density = '        .:░▒▓█';
@@ -55,7 +44,7 @@
         video = createCapture(VIDEO);
         let x = 64;
         let y = 48;
-        let i = 4;
+        let i = 2;
 
         video.size(x * i, y * i);
         asciiDiv = createDiv();
