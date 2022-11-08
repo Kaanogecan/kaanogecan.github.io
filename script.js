@@ -184,7 +184,10 @@ var bottomConsole =
         if (list.length == 0) {
             bottomConsole.hideInteliDiv()
             return;
-        }// intelli wrapper show değil add olacak 
+        }
+        if ($("#intelliDiv").length == 0) {
+            $("#bottomStatic").prepend("<div id='intelliDiv'></div>")
+        }
         $("#intelliDiv").show();
         var div = "<ul>";
         list.forEach(element => {
