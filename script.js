@@ -2,6 +2,7 @@
 var redirects =
 {
     pagesEnum: { Contact: 0, Abilities: 1 },
+    hideModal: function () { utils.modal.hideModal() },
 
     redirectInit: function () {
         let url = location.href;
@@ -46,6 +47,7 @@ var redirects =
             redirects.changeTitle('GetContact()');
             redirects.changeUrl("contact.html", 'GetContact()');
         }
+        this.hideModal();
     },
     getAbilitiesPage: function (htmlDiv, changeTitle = true) {
         htmlDiv = htmlDiv == undefined || htmlDiv == "" ? "#content" : htmlDiv;
@@ -57,7 +59,7 @@ var redirects =
             redirects.changeTitle('GetAbilities()');
             redirects.changeUrl("abilities.html", 'GetAbilities()');
         }
-
+        this.hideModal();
     },
     getEduInfoPage: function (htmlDiv, changeTitle = true) {
         htmlDiv = htmlDiv == undefined || htmlDiv == "" ? "#content" : htmlDiv;
@@ -69,6 +71,7 @@ var redirects =
             redirects.changeTitle('GetEduInfo()');
             redirects.changeUrl("eduinfo.html", 'GetEduInfo()');
         }
+        this.hideModal();
     },
     getInfoPage: function () {
         homePageFuncs.breakBlink = true;
@@ -77,6 +80,7 @@ var redirects =
         });
         redirects.changeTitle('GetInfo()');
         redirects.changeUrl("info.html", 'GetInfo()');
+        this.hideModal();
     },
     onlyPartialRequestAction: function () {
         $.get("index.html", function (data) {
@@ -180,7 +184,7 @@ var bottomConsole =
         if (list.length == 0) {
             bottomConsole.hideInteliDiv()
             return;
-        }
+        }// intelli wrapper show değil add olacak 
         $("#intelliDiv").show();
         var div = "<ul>";
         list.forEach(element => {
@@ -192,6 +196,7 @@ var bottomConsole =
     },
     hideInteliDiv: function () {
         $("#intelliDiv").hide();
+        $("div").remove("#intelliDiv");
     },
     hideInteliDivDelay: function () {
         function q(i) {
@@ -201,6 +206,7 @@ var bottomConsole =
                 }
                 else {
                     $("#intelliDiv").hide();
+                    $("div").remove("#intelliDiv");
                     // $("#bottomInput").focus()
                     return;
                 }
@@ -290,7 +296,6 @@ var homePageFuncs = {
         }, 500);
     }
 }
-
 var utils =
 {
 
@@ -416,14 +421,20 @@ var utils =
     modal: {
         modal: function (html) {
             $("div").remove("#modal");
-            $("#mainContent").css("filter", "blur(2px)")
-            $("#wrapper").append("<div id ='modal'>" + html + "</div>");
-            $("#modal").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='utils.modal.hideModal()'>x</div>")
+            $.get("glitch.html", function (data) {
+                $("#mainContent").append(data);
+                $("#mainContent").css("filter", "blur(2px)")
+                $("#wrapper").append("<div id ='modal'>" + html + "</div>");
+                $("#modal").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='utils.modal.hideModal()'>x</div>");
+            });
+            // $("#mainContent").css("filter", "blur(2px)")
+            // $("#wrapper").append("<div id ='modal'>" + html + "</div>");
+            // $("#modal").append("<div style='right: 4%;top: 0px;position: absolute; cursor: pointer' onclick='utils.modal.hideModal()'>x</div>");
         },
         hideModal: function () {
+            $("canvas").remove("#canvas");
             $("div").remove("#modal");
             $("#mainContent").css("filter", "blur(0)")
-
         },
     },
     textToSpeech: function (text) {
@@ -486,7 +497,7 @@ var infoPageFuncs = {
         //     this.slideAnimationBottom(1);
     },
     slideAnimationTop: function (animationSpeedMs) {
-        
+
         function sliderStep(value, animationSpeedMs) {
             if (value >= 0) {
                 $("#infoMainContent>#currentPage").css("height", value + "%")
